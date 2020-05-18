@@ -1,0 +1,47 @@
+·
+#include<graphics.h>
+#include<math.h>
+#define PI 3.14
+
+int main(void)
+{
+	double x1 = 10, y1 = 10;
+	double x2 = 30, y2 = 10;
+	double x3 = 10, y3 = 50;
+	double xa, ya, xb, yb, xc, yc;
+	int rot = 60, a = 2, b = 0, c = 0, d = 2;
+	int fx = 30, fy = 50;
+	initgraph(200, 200);
+	line(x1, y1, x2, y2);
+	line(x2, y2, x3, y3);
+	line(x3, y3, x1, y1);
+	xa = x1 * cos(rot * PI / 180) - y1 * sin(rot * PI / 180);
+	xb = x2 * cos(rot * PI / 180) - y2 * sin(rot * PI / 180);
+	xc = x3 * cos(rot * PI / 180) - y3 * sin(rot * PI / 180);
+	ya = x1 * sin(rot * PI / 180) + y1 * cos(rot * PI / 180);
+	yb = x2 * sin(rot * PI / 180) + y2 * cos(rot * PI / 180);
+	yc = x3 * sin(rot * PI / 180) + y3 * cos(rot * PI / 180);
+	xa = xa + fx;
+	ya = ya + fy;
+	xb = xb + fx;
+	yb = yb + fy;
+	xc = xc + fx;
+	yc = yc + fy;
+	xa = a * xa + c * ya;
+	ya = b * xa + d * ya;
+	xb = a * xb + c * yb;
+	yb = b * xb + d * yb;
+	xc = a * xc;
+	yc = d * yc;
+
+	line(xa, ya, xb, yb);
+	line(xb, yb, xc, yc);
+	line(xc, yc, xa, ya);
+
+	getch();
+	closegraph();
+
+	return 0;
+}
+
+·
