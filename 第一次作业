@@ -1,0 +1,53 @@
+·
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+	int x, i;
+	double y;
+	int X[17] = { 0,90,100,110,120,125,130,135,140,145,150,155,160,165,170,175,180 };
+	double Y[17] = { 0, 0.59,0.74,0.78,0.82,0.84,0.86,0.88,0.89,0.91,0.92,0.93,0.95,0.96,0.98,0.99,1.00 };
+	
+	scanf("%d", &x);
+	if (x >= 90 && x <= 180)
+	{
+		if (x <= 100)
+			i = 2;
+		else if (x < 175)
+		{
+			for (i = 0; i <= 15; i++)
+			{
+				if (X[i] >= x)
+					break;
+			}
+			if ((x - X[i - 1]) < (X[i] - x))
+			{
+				i = i - 1;
+			}
+			else
+			{
+				i = i;
+			}
+		}
+		else
+		{
+			i = 15;
+		}
+	}
+	else
+	{
+		printf("error\n");
+		getchar();
+		return 0;
+	}
+	y = (x - X[i]) * (x - X[i + 1]) * Y[i - 1] / ((X[i - 1] - X[i]) * (X[i - 1] - X[i + 1])) + (x - X[i - 1]) * (x - X[i + 1]) * Y[i] / ((X[i] - X[i - 1]) * (X[i] - X[i + 1])) + (x - X[i - 1]) * (x - X[i]) * Y[i + 1] / ((X[i + 1] - X[i - 1]) * (X[i + 1] - X[i]));
+    
+	printf("结果是：%.2f\n", y);
+	getchar();
+	return 0;
+}
+
+
+
+·
